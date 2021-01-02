@@ -1,0 +1,8 @@
+make.*
+build
+opencv_*
+bin
+other
+*.mp4
+*.avi
+*.mp3
