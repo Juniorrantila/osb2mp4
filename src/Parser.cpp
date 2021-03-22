@@ -1,4 +1,4 @@
-#pragma once
+
 
 #include <Components.hpp>
 #include <Helpers.hpp>
@@ -434,9 +434,9 @@ namespace sb
     )
     {
         std::ifstream osbFile(osb);
-        if (!osbFile.is_open()) throw std::exception(("Failed to open .osb file \"" + osb + "\"").c_str());
+        //if (!osbFile.is_open()) throw std::exception(("Failed to open .osb file \"" + osb + "\"").c_str());
         std::ifstream diffFile(std::filesystem::path(directory) / diff);
-        if (!diffFile.is_open()) throw std::exception(("Failed to open .osu file \"" + diff + "\"").c_str());
+        //if (!diffFile.is_open()) throw std::exception(("Failed to open .osu file \"" + diff + "\"").c_str());
 
         std::size_t lineNumber = 0;
         std::unordered_map<std::string, std::string> variables;

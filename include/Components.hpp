@@ -1,5 +1,16 @@
 #pragma once
 
+#include "Keyframes.hpp"
+
+#include <opencv2/opencv.hpp>
+#include <string>
+#include <limits>
+#include <vector>
+#include <utility>
+#include <memory>
+#include <algorithm>
+#include <optional>
+
 namespace sb
 {
     class Loop
@@ -163,6 +174,7 @@ namespace sb
 
     class Sample
     {
+    public:
         Sample(double starttime, Layer layer, const std::string& filepath, float volume);
         const double starttime;
         const Layer layer;
@@ -185,5 +197,10 @@ namespace sb
     public:
         Video() = default;
         Video(double starttime, const std::string& filepath, std::pair<double, double> offset);
-    }
+        Video& operator=(const Video&) = default;
+        double starttime = 0;
+        std::string filepath = "";
+        std::pair<double, double> offset = { 0, 0 };
+        bool exists = false;
+    };
 }

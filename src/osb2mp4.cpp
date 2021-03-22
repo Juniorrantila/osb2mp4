@@ -1,4 +1,5 @@
-#include <Storyboard.hpp>
+
+#include "osb2mp4.hpp"
 
 #include <opencv2/opencv.hpp>
 #include <iostream>
@@ -69,21 +70,21 @@ int main(int argc, char* argv[]) {
                 explanation, \
                 placeholder \
             )
-        opt(true, "-s", "--start-time", _starttime, std::stod(arg), "start time in ms (default: automatic)", "time"),
-        opt(true, "-e", "--end-time", _endtime, std::stod(arg), "end time in ms (default: automatic)", "time"),
-        opt(true, "-d", "--duration", _duration, std::stod(arg), "duration in ms (default: automatic)", "time"),
-        opt(true, "-o", "--output", outputFile, arg, "output video name (default: video.mp4)", "time"),
-        opt(true, "-diff", "--difficulty", diff, arg, "difficulty file name (default: first found)", "filename"),
-        opt(true, "-w", "--width", frameWidth, std::stoi(arg), "video width (default: 1920)", "pixels"),
-        opt(true, "-h", "--height", frameHeight, std::stoi(arg), "video height (default: 1080)", "pixels"),
-        opt(true, "-f", "--frame-rate", fps, std::stof(arg), "video frame rate (default: 30)", "fps"),
-        opt(true, "-mv", "--music-volume", musicVolume, std::stof(arg) / 100.0f, "music volume from 0 to 100 (default: 20)", "volume"),
-        opt(true, "-ev", "--effect-volume", effectVolume, std::stof(arg) / 100.0f, "effect volume from 0 to 100, i.e. samples (default: 20)", "volume"),
-        opt(true, "-dim", "--background-dim", dim, 1 - std::stof(arg) / 100.0f, "background dim value from 0 to 100 (default: 0)", "dim"),
-        opt(false, "-ar", "--respect-aspect-ratio", useStoryboardAspectRatio, true, "change to 4:3 aspect ratio if WidescreenStoryboard is disabled in the difficulty file", ""),
+        opt(true, "-s",     "--start-time",     _starttime, std::stod(arg), "start time in ms (default: automatic)", "time"),
+        opt(true, "-e",     "--end-time",       _endtime, std::stod(arg), "end time in ms (default: automatic)", "time"),
+        opt(true, "-d",     "--duration",       _duration, std::stod(arg), "duration in ms (default: automatic)", "time"),
+        opt(true, "-o",     "--output",         outputFile, arg, "output video name (default: video.mp4)", "time"),
+        opt(true, "-diff", "--difficulty",      diff, arg, "difficulty file name (default: first found)", "filename"),
+        opt(true, "-w",     "--width",          frameWidth, std::stoi(arg), "video width (default: 1920)", "pixels"),
+        opt(true, "-h",     "--height",         frameHeight, std::stoi(arg), "video height (default: 1080)", "pixels"),
+        opt(true, "-f",     "--frame-rate",     fps, std::stof(arg), "video frame rate (default: 30)", "fps"),
+        opt(true, "-mv",    "--music-volume",   musicVolume, std::stof(arg) / 100.0f, "music volume from 0 to 100 (default: 20)", "volume"),
+        opt(true, "-ev",    "--effect-volume",  effectVolume, std::stof(arg) / 100.0f, "effect volume from 0 to 100, i.e. samples (default: 20)", "volume"),
+        opt(true, "-dim",   "--background-dim", dim, 1 - std::stof(arg) / 100.0f, "background dim value from 0 to 100 (default: 0)", "dim"),
+        opt(false, "-ar",   "--respect-aspect-ratio", useStoryboardAspectRatio, true, "change to 4:3 aspect ratio if WidescreenStoryboard is disabled in the difficulty file", ""),
         opt(false, "-fail", "--show-fail-layer", showFailLayer, true, "show the fail layer instead of the pass layer", ""),
         opt(false, "-keep", "--keep-temp-files", keepTemporaryFiles, true, "don't delete temporary files (temp.mp3 & temp.avi)", ""),
-        opt(true, "-z", "--zoom", zoom, std::stof(arg), "zoom factor to use when rendering, useful for checking out-of-bounds sprites (default: 1)", "factor")
+        opt(true, "-z",     "--zoom",           zoom, std::stof(arg), "zoom factor to use when rendering, useful for checking out-of-bounds sprites (default: 1)", "factor")
 #undef opt
     };
 

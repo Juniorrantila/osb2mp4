@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Enums.hpp"
 #include <memory>
 #include <string>
 
@@ -8,7 +9,7 @@ namespace sb
     class Colour
     {
     public:
-        Colour(){}
+        Colour();
         Colour(double R, double G, double B);
         double operator[](const int index) const;
         Colour operator+(const Colour& other) const;
@@ -41,20 +42,85 @@ namespace sb
     {
     public:
         Event() = default;
-        Event(EventType type, Easing easing, double starttime, double endtime, T startvalue, T endvalue, int triggerID = 0, double triggerST = 0, double triggerGP = 0);
-        std::unique_ptr<IEvent> copy() const;
-        EventType GetType() const;
-        Easing GetEasing() const;
-        double GetStartTime() const;
-        double GetEndTime() const;
-        void SetStartTime(double time);
-        void SetEndTime(double time);
-        T GetStartValue() const;
-        T GetEndValue() const;
-        int GetTriggerID() const;
-        double GetTriggerST() const;
-        int GetTriggerGP() const;
-        void SetTriggerID(int id, double st, int gp);
+        Event(EventType type, Easing easing, double starttime, double endtime, T startvalue, T endvalue, int triggerID = 0, double triggerST = 0, double triggerGP = 0)
+        :
+            type(type),
+            easing(easing),
+            starttime(starttime),
+            endtime(endtime),
+            startvalue(startvalue),
+            endvalue(endvalue),
+            triggerID(triggerID),
+            triggerST(triggerST),
+            triggerGP(triggerGP)
+        {}
+
+        std::unique_ptr<IEvent> copy() const {
+            return std::make_unique<Event<T>>(type, easing, starttime, endtime, startvalue, endvalue, triggerID, triggerST, triggerGP);
+        }
+        
+        EventType GetType() const
+        {
+            return type;
+        }
+
+        Easing GetEasing() const
+        {
+            return easing;
+        }
+
+        double GetStartTime() const
+        {
+            return starttime;
+        }
+
+        double GetEndTime() const
+        {
+            return endtime;
+        }
+
+        void SetStartTime(double time)
+        {
+            starttime = time;
+        }
+
+        void SetEndTime(double time)
+        {
+            endtime = time;
+        }
+
+        T GetStartValue() const
+        {
+            return startvalue;
+        }
+
+        T GetEndValue() const
+        {
+            return endvalue;
+        }
+
+        int GetTriggerID() const
+        {
+            return triggerID;
+        }
+
+        double GetTriggerST() const
+        {
+            return triggerST;
+        }
+
+        int GetTriggerGP() const
+        {
+            return triggerGP;
+        }
+
+        void SetTriggerID(int id, double st, int gp)
+        {
+            triggerID = id;
+            triggerST = st;
+            triggerGP = gp;
+        }
+
     private:
         EventType type;
         Easing easing;
@@ -70,7 +136,7 @@ namespace sb
     class HitSound
     {
     public:
-        HitSound() {}
+        HitSound();
         HitSound(int normalSet, int additionSet, int additionFlag, int index);
         HitSound(const std::string& triggerType);
         bool operator==(const HitSound& other) const;

@@ -1,5 +1,5 @@
-#pragma once
 
+#include "Components.hpp"
 #include "Keyframes.hpp"
 
 #include <opencv2/opencv.hpp>
@@ -289,12 +289,12 @@ Origin Sprite::GetOrigin() const
     return origin;
 }
 
-virtual const std::string Sprite::GetFilePath(double time) const
+const std::string Sprite::GetFilePath(double time) const
 {
     return filepath;
 }
 
-virtual std::vector<std::string> Sprite::GetFilePaths() const
+std::vector<std::string> Sprite::GetFilePaths() const
 {
     return std::vector<std::string>({ filepath });
 }
@@ -363,9 +363,6 @@ Sample::Sample(double starttime, Layer layer, const std::string& filepath, float
 {}
 
 
-
-Background::Background() = default;
-
 Background::Background(const std::string& filepath, std::pair<double, double> offset)
     :
     filepath(filepath),
@@ -374,10 +371,6 @@ Background::Background(const std::string& filepath, std::pair<double, double> of
     exists = true;
 }
 
-Background& Background::operator=(const Background&) = default;
-
-
-Video::Video() = default;
 Video::Video(double starttime, const std::string& filepath, std::pair<double, double> offset)
     :
     starttime(starttime),
@@ -386,7 +379,5 @@ Video::Video(double starttime, const std::string& filepath, std::pair<double, do
 {
     exists = true;
 }
-
-Video& Video::operator=(const Video&) = default;
 
 } // namespace sb

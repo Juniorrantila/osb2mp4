@@ -1,5 +1,6 @@
 #pragma once
 
+#include <unordered_map>
 #include <string>
 
 namespace sb
@@ -12,7 +13,8 @@ namespace sb
         Foreground,
         Overlay
     };
-    extern const std::string LayerStrings[];
+    //extern const std::string LayerStrings[];
+    extern const std::unordered_map<std::string, Layer> LayerStrings;
 
     enum class Origin
     {
@@ -26,7 +28,8 @@ namespace sb
         BottomCentre,
         BottomRight
     };
-    extern const std::string OriginStrings[];
+    //extern const std::string OriginStrings[];
+    extern const std::unordered_map<std::string, Origin> OriginStrings;
 
     enum class LoopType
     {
@@ -34,7 +37,8 @@ namespace sb
         LoopOnce,
         Custom
     };
-    extern const std::string LoopTypeStrings[];
+    //extern const std::string LoopTypeStrings[];
+    extern const std::unordered_map<std::string, LoopType> LoopTypeStrings;
 
     enum class ParameterType
     {
@@ -42,7 +46,8 @@ namespace sb
         FlipV,
         Additive
     };
-    extern const std::string ParameterTypeStrings[];
+    //extern const std::string ParameterTypeStrings[];
+    extern const std::unordered_map<std::string, ParameterType> ParameterTypeStrings;
 
     enum class EventType
     {
@@ -57,7 +62,8 @@ namespace sb
         C,
         P
     };
-    extern const std::string EventTypeStrings[];
+    //extern const std::string EventTypeStrings[];
+    extern const std::unordered_map<std::string, EventType> EventTypeStrings;
 
     enum class Keyword
     {
@@ -68,5 +74,46 @@ namespace sb
         T,
         L
     };
-    extern const std::string KeywordStrings[];
-}
+    //extern const std::string KeywordStrings[];
+    extern const std::unordered_map<std::string, Keyword> KeywordStrings;
+
+    enum class Easing
+    {
+        None,
+        Out,
+        In,
+        InQuad,
+        OutQuad,
+        InOutQuad,
+        InCubic,
+        OutCubic,
+        InOutCubic,
+        InQuart,
+        OutQuart,
+        InOutQuart,
+        InQuint,
+        OutQuint,
+        InOutQuint,
+        InSine,
+        OutSine,
+        InOutSine,
+        InExpo,
+        OutExpo,
+        InOutExpo,
+        InCirc,
+        OutCirc,
+        InOutCirc,
+        InElastic,
+        OutElastic,
+        OutElasticHalf,
+        OutElasticQuarter,
+        InOutElastic,
+        InBack,
+        OutBack,
+        InOutBack,
+        InBounce,
+        OutBounce,
+        InOutBounce,
+        Step
+    };
+} // namespace sb

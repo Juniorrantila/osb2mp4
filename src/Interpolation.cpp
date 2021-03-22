@@ -1,50 +1,11 @@
-#pragma once
+
 
 #include <Enums.hpp>
 #include <cmath>
 
 namespace sb
 {
-    enum class Easing
-    {
-        None,
-        Out,
-        In,
-        InQuad,
-        OutQuad,
-        InOutQuad,
-        InCubic,
-        OutCubic,
-        InOutCubic,
-        InQuart,
-        OutQuart,
-        InOutQuart,
-        InQuint,
-        OutQuint,
-        InOutQuint,
-        InSine,
-        OutSine,
-        InOutSine,
-        InExpo,
-        OutExpo,
-        InOutExpo,
-        InCirc,
-        OutCirc,
-        InOutCirc,
-        InElastic,
-        OutElastic,
-        OutElasticHalf,
-        OutElasticQuarter,
-        InOutElastic,
-        InBack,
-        OutBack,
-        InOutBack,
-        InBounce,
-        OutBounce,
-        InOutBounce,
-        Step
-    };
-
+   
     constexpr double PI = 3.14159265358979323846;
     double Reverse(double(*f)(double), double t) { return 1 - f(1 - t); }
     double ToInOut(double(*f)(double), double t) { return 0.5 * (t < 0.5 ? f(2 * t) : (2 - f(2 - 2 * t))); }

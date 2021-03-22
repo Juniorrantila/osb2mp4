@@ -1,7 +1,8 @@
-#pragma once
 
-#include <Components.hpp>
-#include <Parser.hpp>
+
+#include "Storyboard.hpp"
+#include "Components.hpp"
+#include "Parser.hpp"
 
 #include <opencv2/opencv.hpp>
 #include <iostream>
@@ -15,7 +16,7 @@
 
 namespace sb
 {
-Storyboard::Storyboard(const std::filesystem::path& directory, const std::string& diff, std::pair<unsigned, unsigned> resolution, float musicVolume, float effectVolume, float dim, bool useStoryboardAspectRatio, bool showFailLayer, float zoom = 1)
+Storyboard::Storyboard(const std::filesystem::path& directory, const std::string& diff, std::pair<unsigned, unsigned> resolution, float musicVolume, float effectVolume, float dim, bool useStoryboardAspectRatio, bool showFailLayer, float zoom)
     :
     directory(directory),
     diff(diff),
@@ -38,7 +39,7 @@ Storyboard::Storyboard(const std::filesystem::path& directory, const std::string
     }
     if (osb.empty())
     {
-        throw std::exception("No .osb file found");
+        //throw std::exception("No .osb file found");
     }
     if (this->diff.empty())
         for (const std::filesystem::directory_entry& entry : std::filesystem::directory_iterator(directory))
@@ -51,7 +52,7 @@ Storyboard::Storyboard(const std::filesystem::path& directory, const std::string
         }
     if (this->diff.empty())
     {
-        throw std::exception("No difficulty file found");
+        //throw std::exception("No difficulty file found");
     }
     ParseStoryboard(directory, osb, this->diff, sprites, samples, hitSounds, background, video, info);
 

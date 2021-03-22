@@ -1,4 +1,6 @@
-#pragma once
+
+
+#include "Types.hpp"
 
 #include <memory>
 #include <string>
@@ -7,7 +9,7 @@ namespace sb
 {
 
 Colour::Colour(){}
-Colout::Colour(double R, double G, double B)
+Colour::Colour(double R, double G, double B)
     :
     R(R),
     G(G),
@@ -31,7 +33,7 @@ Colour Colour::operator+(const Colour& other) const
 
 Colour Colour::operator-(const Colour& other) const
 {
-    return Colour::Colour(R - other.R, G - other.G, B - other.B);
+    return Colour(R - other.R, G - other.G, B - other.B);
 };
 
 Colour Colour::operator*(const double other) const
@@ -40,91 +42,6 @@ Colour Colour::operator*(const double other) const
 };
 
 
-
-Event::Event() = default;
-
-template <typename T>
-Event::Event(EventType type, Easing easing, double starttime, double endtime, T startvalue, T endvalue, int triggerID = 0, double triggerST = 0, double triggerGP = 0)
-    :
-    type(type),
-    easing(easing),
-    starttime(starttime),
-    endtime(endtime),
-    startvalue(startvalue),
-    endvalue(endvalue),
-    triggerID(triggerID),
-    triggerST(triggerST),
-    triggerGP(triggerGP)
-{}
-
-std::unique_ptr<IEvent> Event::copy() const
-{
-    return std::make_unique<Event<T>>(type, easing, starttime, endtime, startvalue, endvalue, triggerID, triggerST, triggerGP);
-}
-
-EventType Event::GetType() const
-{
-    return type;
-}
-
-Easing Event::GetEasing() const
-{
-    return easing;
-}
-
-double Event::GetStartTime() const
-{
-    return starttime;
-}
-
-double Event::GetEndTime() const
-{
-    return endtime;
-}
-
-void Event::SetStartTime(double time)
-{
-    starttime = time;
-}
-
-void Event::SetEndTime(double time)
-{
-    endtime = time;
-}
-
-template<typename T>
-T Event::GetStartValue() const
-{
-    return startvalue;
-}
-
-template<typename T>
-T Event::GetEndValue() const
-{
-    return endvalue;
-}
-
-int Event::GetTriggerID() const
-{
-    return triggerID;
-}
-
-double Event::GetTriggerST() const
-{
-    return triggerST;
-}
-
-int Event::GetTriggerGP() const
-{
-    return triggerGP;
-}
-
-void Event::SetTriggerID(int id, double st, int gp)
-{
-    triggerID = id;
-    triggerST = st;
-    triggerGP = gp;
-}
 
 // https://osu.ppy.sh/wiki/en/osu%21_File_Formats/Osu_%28file_format%29#hitsounds
 // https://osu.ppy.sh/wiki/en/Storyboard_Scripting/Compound_Commands
