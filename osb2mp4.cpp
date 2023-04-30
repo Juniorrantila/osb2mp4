@@ -136,7 +136,7 @@ int main(int argc, char* argv[]) {
             directory, diff, std::pair<unsigned, unsigned>(frameWidth, frameHeight),
             musicVolume * volume, effectVolume * volume, dim, useStoryboardAspectRatio, showFailLayer, zoom);
     }
-    catch (std::exception e)
+    catch (std::exception& e)
     {
         std::cerr << e.what() << std::endl;
         exit(1);
